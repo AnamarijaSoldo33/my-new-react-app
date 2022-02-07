@@ -1,3 +1,4 @@
+import Weather from "./Weather";
 import "./App.css";
 
 function App() {
@@ -5,7 +6,16 @@ function App() {
     <div className="App">
       <div className="container">
         {" "}
-        <h1>Hello</h1>
+        <Weather />
+        <footer>
+          <a
+            href="https://github.com/AnamarijaSoldo33/my-new-react-app"
+            alt="_target"
+          >
+            Open sourced code
+          </a>{" "}
+          by Anamarija Soldo
+        </footer>
       </div>
     </div>
   );
