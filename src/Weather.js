@@ -9,8 +9,12 @@ export default function Weather() {
     setReady(true);
     setWeather({
       temperature: response.data.main.temp,
-      wind: 12,
+      wind: response.data.wind.speed,
       city: response.data.name,
+      humidity: response.data.main.humidity,
+      description: response.data.weather[0].description,
+      icon: "https://ssl.gstatic.com/onebox/weather/64/rain_light.png",
+      date: "Wednesday 07:00",
     });
   }
 
@@ -38,23 +42,21 @@ export default function Weather() {
         </form>
         <h1>New York</h1>
         <ul>
-          <li>Wednesday 07:00</li>
-          <li>Mostly cloudly</li>
+          <li>{weather.date}</li>
+          <li className="text-capitalize">{weather.description}</li>
         </ul>
         <div className="row">
           <div className="col-6">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/rain_light.png"
-              alt="rainy"
-            />
-            <span className="temperature">{Math.round(temperature)}</span>
+            <img src={weather.icon} alt={weather.description} />
+            <span className="temperature">
+              {Math.round(weather.temperature)}
+            </span>
             <span className="units"> °C</span>
           </div>
           <div className="col-6">
             <ul>
-              <li>Precipitation:15%</li>
-              <li>Humidity:72%</li>
-              <li>Wind:13km/h</li>
+              <li>Humidity:{weather.humidity}%</li>
+              <li>Wind:{Math.round(weather.wind)}km/h</li>
             </ul>
           </div>
         </div>
