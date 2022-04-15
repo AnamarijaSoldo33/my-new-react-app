@@ -10,7 +10,9 @@ export default function Weather(props) {
   function handleResponse(response) {
     setReady(true);
     setWeather({
+      ready: true,
       temperature: response.data.main.temp,
+      coordinates: response.data.coord,
       wind: response.data.wind.speed,
       city: response.data.name,
       humidity: response.data.main.humidity,
@@ -34,7 +36,7 @@ export default function Weather(props) {
   function handleCity(event) {
     setCity(event.target.value);
   }
-  if (ready) {
+  if (weather.ready) {
     return (
       <div className="Weather">
         <form onSubmit={handleSubmit}>
@@ -76,7 +78,7 @@ export default function Weather(props) {
             </ul>
           </div>
         </div>
-        <WeatherForecast />
+        <WeatherForecast coordinates={weather.coordinates} />
       </div>
     );
   } else {
