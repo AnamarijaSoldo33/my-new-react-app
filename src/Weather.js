@@ -35,7 +35,7 @@ export default function Weather(props) {
   function handleCity(event) {
     setCity(event.target.value);
   }
-  if (weather.ready) {
+  if (ready) {
     return (
       <div className="Weather">
         <form onSubmit={handleSubmit}>
